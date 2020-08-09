@@ -8,9 +8,9 @@ public class Teleporter : MonoBehaviour
 
   
 
-	void OnTriggerEnter(Collider Col)
+	void OnTriggerEnter(Collider col)
 	{
-		Col.transform.position = destination.transform.position;
+		col.transform.position = destination.transform.position;
 	}
 
 
