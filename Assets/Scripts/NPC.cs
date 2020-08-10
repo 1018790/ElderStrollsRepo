@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour
     {
 
 		Vector3 Pos = Camera.main.WorldToScreenPoint(NPCCharacter.position);
-		Pos.y += 5;
+		Pos.y += 175;
 		ChatBackground.position = Pos;
     }
 
