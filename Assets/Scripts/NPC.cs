@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NPC : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class NPC : MonoBehaviour
 	public Transform NPCCharacter;
 
 	private DialogueSystem dialogueSystem;
+    private bool isTalking = false;
 
 	public string Name;
 
@@ -32,20 +34,24 @@ public class NPC : MonoBehaviour
 	public void OnTriggerStay(Collider other)
 	{
 		this.gameObject.GetComponent<NPC>().enabled = true;
-		FindObjectOfType<DialogueSystem>().EnterRangeOfNPC();
+        dialogueSystem.EnterRangeOfNPC();
+
 		if ((other.gameObject.tag == "Player") && Input.GetKeyDown(KeyCode.F))
 		{
-			this.gameObject.GetComponent<NPC>().enabled = true;
-			dialogueSystem.Names = Name;
-			dialogueSystem.dialogueLines = sentences;
-			FindObjectOfType<DialogueSystem>().NPCName();
-		}
+
+            this.gameObject.GetComponent<NPC>().enabled = true;
+            dialogueSystem.Names = Name;
+            dialogueSystem.dialogueLines = sentences;
+            dialogueSystem.NPCName();
+
+        }
 	}
 
 	public void OnTriggerExit(Collider other)
 	{
 		FindObjectOfType<DialogueSystem>().OutOfRange();
 		this.gameObject.GetComponent<NPC>().enabled = false;
+        isTalking = false;
 	}
 
 }

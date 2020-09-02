@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DialogueSystem : MonoBehaviour
 {
@@ -157,6 +158,7 @@ public class DialogueSystem : MonoBehaviour
 	{
 		dialogueGUI.SetActive(false);
 		dialogueBoxGUI.gameObject.SetActive(false);
+        SceneManager.LoadScene("ChessGame");
 	}
 
 	public void OutOfRange()
